@@ -3,7 +3,7 @@
 
 ### features
 
-- runs on both server and client side
+- runs on both sides by sharing application code with the server and the client
 - implements a basic MVC pattern
   - sample controllers (index, details, 404 page)
   - sample data service (sampleItem)
@@ -13,12 +13,18 @@
 
 ### requirements
 
-express.js v4
+- node.js
+- express.js v4
+- gulp
 
 ### usage
 
-1. run 
+1. install components 
+    ```
+    $ npm i
+    ```
+2. start server
     ```
     $ gulp server
     ```
-2. in the browser open: http://localhost:8000
+3. in the browser open: http://localhost:8000
