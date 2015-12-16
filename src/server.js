@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express'),
     app = require('./middleware/app'),
     logger = require('./middleware/app'),

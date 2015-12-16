@@ -1,3 +1,5 @@
+'use strict';
+
 // sample items
 
 module.exports = [

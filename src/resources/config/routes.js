@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     '/': require('../../controller/index'),
     '/details/:id': require('../../controller/details'),

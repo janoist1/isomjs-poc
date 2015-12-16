@@ -1,3 +1,5 @@
+'use strict';
+
 var handlebars = require('handlebars');
 var routes = require('../resources/config/routes');
 var isServer = require('process').browser == undefined; // todo: get rid of server/client dependencies from App

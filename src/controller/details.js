@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require('underscore');
 var view = require('../resources/views/main/details.hbs');
 

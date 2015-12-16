@@ -1,3 +1,5 @@
+'use strict';
+
 var Director = require('director');
 var isServer = require('process').browser == undefined;
 

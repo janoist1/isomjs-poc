@@ -1,3 +1,5 @@
+'use strict';
+
 var App = require('../app/app'),
     Router = require('../service/router'),
     jsdom = require('jsdom');

@@ -1,3 +1,5 @@
+'use strict';
+
 var view = require('../resources/views/main/404.hbs');
 
 module.exports = {
