@@ -1,7 +1,6 @@
 'use strict';
 
 var Director = require('director');
-var isServer = require('process').browser == undefined;
 
 module.exports = Router;
 
@@ -9,10 +8,14 @@ module.exports = Router;
  * Wrapper for Director router
  * Responsible for both client and server side routing
  *
+ * @param isServer - flag that indicates if we are on a server or client platform
  * @constructor
  */
-function Router() {
-    if (isServer) {
+function Router(isServer) {
+    this.isServer = isServer;
+
+    // init Director
+    if (this.isServer) {
         this.director = new Director.http.Router();
     } else {
         this.director = new Director.Router().configure({
@@ -28,7 +31,7 @@ function Router() {
  * @param callback
  */
 Router.prototype.on = function (pattern, callback) {
-    this.director[isServer ? 'get' : 'on'](pattern, callback);
+    this.director[this.isServer ? 'get' : 'on'](pattern, callback);
 };
 
 /**

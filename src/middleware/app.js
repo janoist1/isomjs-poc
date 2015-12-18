@@ -21,7 +21,7 @@ var layout = require('../resources/views/layout.html');
 var document = jsdom.jsdom(layout, {});
 
 // create app & pass the dom
-var app = new App(new Router(), document);
+var app = new App(new Router(true), document, true);
 
 // make the response object accessible
 var response;

@@ -2,7 +2,6 @@
 
 var handlebars = require('handlebars');
 var routes = require('../resources/config/routes');
-var isServer = require('process').browser == undefined; // todo: get rid of server/client dependencies from App
 
 module.exports = exports = App;
 
@@ -39,7 +38,6 @@ function App(router, document, state, mountId) {
             this.router.on(pattern, (function (pattern) {
                 var context = {
                     app: app,
-                    isServer: isServer, // todo: isServer
                 };
                 var callback = routes[pattern];
 
@@ -47,7 +45,7 @@ function App(router, document, state, mountId) {
                     console.log('App.match', pattern);
 
                     // add some server specific logic, todo: this probably should be removed/replaced by a more abstract solution
-                    if (isServer) {
+                    if (context.app.router.isServer) {
                         context.req = this.req;
                         context.res = this.res;
                     }
@@ -97,7 +95,7 @@ App.prototype.render = function (view, data) {
 
     this.document.getElementById(this.mountId).innerHTML =
         // todo: sort out this - get rid of the condition
-        isServer ? view(data) : handlebars.compile(view)(data);
+        this.router.isServer ? view(data) : handlebars.compile(view)(data);
 
     this.fireEvent('render');
 };

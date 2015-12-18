@@ -13,7 +13,7 @@ module.exports = function Details(id) {
     }
 
     this.app.render(view, {
-        platform: this.isServer ? 'server' : 'client',
+        platform: this.app.router.isServer ? 'server' : 'client',
         item: item
     });
 };

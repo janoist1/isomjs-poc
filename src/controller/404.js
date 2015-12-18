@@ -14,7 +14,7 @@ module.exports = {
      * redirect to a 404 page
      */
     redirect: function redirect404() {
-        if (this.isServer) {
+        if (this.app.router.isServer) {
             this.res.redirect('/404');
         } else {
             this.app.router.setRoute('/404');

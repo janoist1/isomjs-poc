@@ -5,5 +5,5 @@ var App = require('./app/app'),
     state = window.appState || {};
 
 window.onload = function () {
-    new App(new Router(), document, state).startClient();
+    new App(new Router(false), document, state).startClient();
 };
