@@ -58,36 +58,6 @@ function App(router, document, state, mountId) {
 }
 
 /**
- * Start app on client side
- */
-App.prototype.startClient = function () {
-    console.log('App.startClient');
-
-    loadDOMEvents.call(this);
-
-    /**
-     * Load DOM events (attach click event listeners for links)
-     */
-    function loadDOMEvents() {
-        if (document === undefined) {
-            console.log('error: document is undefined'); // todo: throw an exception instead
-            return;
-        }
-
-        document.addEventListener('click', function (e) {
-            var el = e.target;
-            var dataset = el && el.dataset;
-
-            if (el && el.nodeName === 'A' && (dataset.passThru == null || dataset.passThru === 'false')) {
-                this.router.setRoute(el.attributes.href.value);
-                e.preventDefault();
-                return false;
-            }
-        }.bind(this), false);
-    }
-};
-
-/**
  * Render component
  */
 App.prototype.render = function (view, data) {
