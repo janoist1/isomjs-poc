@@ -32,7 +32,7 @@ app.on('render', function send() {
 
     response.status(200).send(jsdom.serializeDocument(document));
 
-    // todo: reset app or pass over a state or do something here :)
+    app.reset();
 });
 
 // export app middleware

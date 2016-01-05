@@ -72,6 +72,14 @@ App.prototype.render = function (view, data) {
     this.fireEvent('render');
 };
 
+/**
+ * Reset app
+ */
+App.prototype.reset = function () {
+    console.log('App.reset');
+
+    this.setContent('');
+};
 
 /**
  * Set the content
