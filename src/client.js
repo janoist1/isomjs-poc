@@ -10,11 +10,6 @@ var app = new App(new Router(false), document, state);
  * Load DOM events (attach click event listeners for links)
  */
 function loadDOMEvents() {
-    if (document === undefined) {
-        console.log('error: document is undefined'); // todo: throw an exception instead
-        return;
-    }
-
     // intercept click events on links
     document.addEventListener('click', function (e) {
         var el = e.target;
