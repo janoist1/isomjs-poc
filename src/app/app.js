@@ -20,6 +20,7 @@ function App(router, document, state, mountId) {
     this.document = document; // we might not need this - only the wrapper html .. tbc
     this.state = state || {}; // todo: state handling
     this.mountId = mountId || 'container';
+    this.contentElement = this.document.getElementById(this.mountId); // cache the content element
     this.router = router;
     this.subscribers = {
         render: []
@@ -63,13 +64,25 @@ function App(router, document, state, mountId) {
 App.prototype.render = function (view, data) {
     console.log('App.render', data);
 
-    this.document.getElementById(this.mountId).innerHTML =
+    this.setContent(
         // todo: sort out this - get rid of the condition
-        this.router.isServer ? view(data) : handlebars.compile(view)(data);
+        this.router.isServer ? view(data) : handlebars.compile(view)(data)
+    );
 
     this.fireEvent('render');
 };
 
+
+/**
+ * Set the content
+ *
+ * @param content
+ */
+App.prototype.setContent = function (content) {
+    console.log('App.setContent');
+
+    this.contentElement.innerHTML = content;
+};
 
 /**
  * Subscribe to an event
