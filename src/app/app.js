@@ -11,16 +11,15 @@ module.exports = exports = App;
  * @param router - service dependency
  * @param document - dom dependency
  * @param state - app state
- * @param mountId - id of the element where the App will be mounted on
+ * @param containerId - id of the element where the App will be mounted on
  * @constructor
  */
-function App(router, document, state, mountId) {
+function App(router, document, state, containerId) {
     console.log('App.constructor');
 
     this.document = document; // we might not need this - only the wrapper html .. tbc
     this.state = state || {}; // todo: state handling
-    this.mountId = mountId || 'container';
-    this.contentElement = this.document.getElementById(this.mountId); // cache the content element
+    this.container = this.document.getElementById(containerId || 'container'); // cache the content element
     this.router = router;
     this.subscribers = {
         render: []
@@ -89,7 +88,7 @@ App.prototype.reset = function () {
 App.prototype.setContent = function (content) {
     console.log('App.setContent');
 
-    this.contentElement.innerHTML = content;
+    this.container.innerHTML = content;
 };
 
 /**
