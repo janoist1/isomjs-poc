@@ -25,17 +25,18 @@ function App(router, document, state, containerId) {
         render: []
     };
 
-    loadRoutes.call(this);
+    // lets make app accessible via "app"
+    var app = this;
+
+    loadRoutes();
 
     /**
      * parse routing table and attach handlers
      */
     function loadRoutes() {
         for (var pattern in routes) {
-            var app = this;
-
             // save "pattern" in a closure
-            this.router.on(pattern, (function (pattern) {
+            app.router.on(pattern, (function (pattern) {
                 var context = {
                     app: app,
                 };
